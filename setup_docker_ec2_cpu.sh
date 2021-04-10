@@ -7,7 +7,7 @@ NC='\033[0m'
 sudo apt-get -y update
 printf "${GREEN}update libraries required for docker${NC}"
 
-sudo apt-get install \
+sudo apt-get -y install \
     apt-transport-https \
     ca-certificates \
     curl \
