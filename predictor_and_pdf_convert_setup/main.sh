@@ -15,7 +15,7 @@ yes | bash -c "$(curl -sS https://raw.githubusercontent.com/cortexlabs/cortex/0.
 
 # # pull individual 3 repos
 printf "${GREEN}\n\ncloning repos${NC}"
-cd ..
+cd predictor_and_pdf_convert_setup
 mkdir cortex-api
 cd cortex-api
 git clone https://github.com/read-what-you-need/pdf-to-text.git
@@ -25,13 +25,11 @@ cd ..
 printf "${GREEN}\n\n 3/3 ✓ clone successful ${NC}"
 
 # seed the environment variables in bashrc
-cd scripts-ec2-setup
 printf "${GREEN}\n\nseed environment variables${NC}"
 export $(egrep -v '^#' .env | xargs)
 
 
 # activate the api activation protocol
-cd predictor_and_pdf_convert_setup
 printf "${GREEN}\n\nLaunching cortex${NC}"
 bash ./launch_cortex.sh
 cd ..
