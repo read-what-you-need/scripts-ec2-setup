@@ -30,11 +30,14 @@ export $(egrep -v '^#' .env | xargs)
 
 
 # activate the api activation protocol
+cd predictor_and_pdf_convert_setup
 printf "${GREEN}\n\nLaunching cortex${NC}"
 bash ./launch_cortex.sh
+cd ..
 
 
 # set up crontab env
+cd ..
 mkdir cron-jobs
 touch cron.output
 touch cron.error
