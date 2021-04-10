@@ -28,7 +28,7 @@ printf "${GREEN}\n\n 3/3 ✓ clone successful ${NC}"
 cd scripts-ec2-setup
 printf "${GREEN}\n\nseed environment variables${NC}"
 export $(egrep -v '^#' .env | xargs)
-cd ..
+
 
 # activate the api activation protocol
 cd predictor_and_pdf_convert_setup
