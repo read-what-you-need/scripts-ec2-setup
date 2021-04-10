@@ -2,7 +2,7 @@
 
 
 # setup docker first
-../setup_docker_ec2_cpu.sh
+sudo bash ./setup_docker_ec2_cpu.sh
 
 # setup cortex
 
