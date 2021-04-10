@@ -28,5 +28,3 @@ printf "${GREEN}install docke${NC}"
 sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose
 
 sudo groupadd docker; sudo gpasswd -a $USER docker
-printf "${GREEN}\n\ninstalling cortex${NC}"
-$ bash -c "$(curl -sS https://raw.githubusercontent.com/cortexlabs/cortex/0.21/get-cli.sh)"

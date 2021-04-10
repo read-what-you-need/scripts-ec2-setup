@@ -5,7 +5,9 @@
 sudo bash ./setup_docker_ec2_cpu.sh
 
 # # setup cortex
-bash -c "$(curl -sS https://raw.githubusercontent.com/cortexlabs/cortex/0.21/get-cli.sh)"
+printf "${GREEN}\n\ninstalling cortex${NC}"
+yes | bash -c "$(curl -sS https://raw.githubusercontent.com/cortexlabs/cortex/0.21/get-cli.sh)"
+
 
 # # pull individual 3 repos
 cd ..
