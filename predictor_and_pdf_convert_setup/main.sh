@@ -13,6 +13,10 @@ printf "${GREEN}\n\ninstalling cortex${NC}"
 yes | bash -c "$(curl -sS https://raw.githubusercontent.com/cortexlabs/cortex/0.21/get-cli.sh)"
 
 
+# seed the environment variables in bashrc
+printf "${GREEN}\n\nseed environment variables${NC}"
+export $(egrep -v '^#' .env | xargs)
+
 # # pull individual 3 repos
 printf "${GREEN}\n\ncloning repos${NC}"
 cd predictor_and_pdf_convert_setup
@@ -21,23 +25,21 @@ cd cortex-api
 git clone https://github.com/read-what-you-need/pdf-to-text.git
 git clone https://github.com/read-what-you-need/semantic-search-handler.git
 git clone --recursive https://github.com/read-what-you-need/e2e-qg.git
-cd ..
+
 printf "${GREEN}\n\n 3/3 ✓ clone successful ${NC}"
 
-# seed the environment variables in bashrc
-printf "${GREEN}\n\nseed environment variables${NC}"
-export $(egrep -v '^#' .env | xargs)
 
 
 # activate the api activation protocol
 printf "${GREEN}\n\nLaunching cortex${NC}"
 bash ./launch_cortex.sh
-
+cd ..
 
 
 # set up crontab env
 
 mkdir cron-jobs
+cd cron-jobs
 touch cron.output
 touch cron.error
 cd ..
@@ -46,4 +48,4 @@ cd ..
 (crontab -l 2>/dev/null; echo "* * * * * /bin/bash ~/cortex-api-health-update.sh 1> ~/cron-jobs/cron.output 2> ~/cron-jobs/cron.error") | crontab -
 
 
-cortex --watch
+cortex get --watch
