@@ -25,7 +25,7 @@ cd cortex-api
 git clone https://github.com/read-what-you-need/pdf-to-text.git
 git clone https://github.com/read-what-you-need/semantic-search-handler.git
 git clone --recursive https://github.com/read-what-you-need/e2e-qg.git
-
+cd ..
 printf "${GREEN}\n\n 3/3 ✓ clone successful ${NC}"
 
 
