@@ -4,7 +4,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NC='\033[0m' 
 
-sudo apt-get update
+sudo apt-get -y update
 printf "${GREEN}update libraries required for docker${NC}"
 
 sudo apt-get install \
