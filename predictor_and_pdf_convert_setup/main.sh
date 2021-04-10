@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# color schemes
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+NC='\033[0m' 
 
 # setup docker first
 sudo bash ./setup_docker_ec2_cpu.sh
@@ -10,20 +14,23 @@ yes | bash -c "$(curl -sS https://raw.githubusercontent.com/cortexlabs/cortex/0.
 
 
 # # pull individual 3 repos
+printf "${GREEN}\n\ncloning repos${NC}"
 cd ..
 mkdir cortex-api
 cd cortex-api
 git clone https://github.com/read-what-you-need/pdf-to-text.git
 git clone https://github.com/read-what-you-need/semantic-search-handler.git
-git clone -r https://github.com/read-what-you-need/e2e-qg.git
+git clone --recursive https://github.com/read-what-you-need/e2e-qg.git
 cd ..
-
+printf "${GREEN}\n\n 3/3 ✓ clone successful ${NC}"
 
 # seed the environment variables in bashrc
+printf "${GREEN}\n\nseed environment variables${NC}"
 export $(egrep -v '^#' .env | xargs)
 
 
-# activate the api activation protocal
+# activate the api activation protocol
+printf "${GREEN}\n\nLaunching cortex${NC}"
 bash ./launch_cortex.sh
 
 
