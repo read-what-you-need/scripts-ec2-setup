@@ -23,9 +23,9 @@ sudo add-apt-repository \
    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
    $(lsb_release -cs) \
    stable"
-sudo apt-get -y update
+sudo apt-get update
 printf "${GREEN}install docke${NC}"
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose
+sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose
 
 sudo groupadd docker; sudo gpasswd -a $USER docker
 printf "${GREEN}\n\ninstalling cortex${NC}"
