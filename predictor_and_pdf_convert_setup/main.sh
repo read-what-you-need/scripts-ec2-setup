@@ -32,16 +32,18 @@ export $(egrep -v '^#' .env | xargs)
 # activate the api activation protocol
 printf "${GREEN}\n\nLaunching cortex${NC}"
 bash ./launch_cortex.sh
-cd ..
+
 
 
 # set up crontab env
-cd ..
+
 mkdir cron-jobs
 touch cron.output
 touch cron.error
+cd ..
 
 # activate crontab
 (crontab -l 2>/dev/null; echo "* * * * * /bin/bash ~/cortex-api-health-update.sh 1> ~/cron-jobs/cron.output 2> ~/cron-jobs/cron.error") | crontab -
 
 
+cortex --watch
