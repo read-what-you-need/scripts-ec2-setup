@@ -44,5 +44,4 @@ touch cron.error
 cd ..
 
 # activate crontab
-(crontab -l 2>/dev/null; echo "* * * * * /bin/bash ~/scripts-ec2-setup/predictor_and_pdf_convert_setup/cortex-api-health-update.sh 1> ~/scripts-ec2-setup/predictor_and_pdf_convert_setup/cron-jobs/cron.output 2> ~/scripts-ec2-setup/predictor_and_pdf_convert_setup/cron-jobs/cron.error") | sudo crontab -
-
+(crontab -l ;echo "* * * * * /bin/bash ~/scripts-ec2-setup/predictor_and_pdf_convert_setup/cortex-api-health-update.sh 1> ~/scripts-ec2-setup/predictor_and_pdf_convert_setup/cron-jobs/cron.output 2> ~/scripts-ec2-setup/predictor_and_pdf_convert_setup/cron-jobs/cron.error")| crontab -
