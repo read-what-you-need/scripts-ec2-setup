@@ -28,7 +28,7 @@ printf "${GREEN}\n\n 3/3 ✓ clone successful ${NC}"
 
 # seed the environment variables in bashrc
 printf "${GREEN}\n\nseed environment variables${NC}"
-for d in cortex-api/*/; do cp .env "$d"; done
+for d in cortex-api/*/; do sudo cp .env "$d"; done
 
 # activate the api activation protocol
 printf "${GREEN}\n\nLaunching cortex${NC}"
