@@ -8,7 +8,7 @@ for i in "${!api_list[@]}";
         do
                 echo "checking ${api_list[i]} api";
 
-                if cortex get "${api_list[i]}" | grep -q live
+                if sudo cortex get "${api_list[i]}" | grep -q live
                         then
 
                            echo "OK";
