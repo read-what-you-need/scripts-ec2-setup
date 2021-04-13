@@ -15,7 +15,7 @@ yes | bash -c "$(curl -sS https://raw.githubusercontent.com/cortexlabs/cortex/0.
 
 # seed the environment variables in bashrc
 printf "${GREEN}\n\nseed environment variables${NC}"
-export $(egrep -v '^#' .env | xargs)
+for d in */; do cp .env "$d"; done
 
 # # pull individual 3 repos
 printf "${GREEN}\n\ncloning repos${NC}"
@@ -45,7 +45,7 @@ touch cron.error
 cd ..
 
 # activate crontab
-(crontab -l 2>/dev/null; echo "* * * * * /bin/bash ~/cortex-api-health-update.sh 1> ~/cron-jobs/cron.output 2> ~/cron-jobs/cron.error") | crontab -
+(crontab -l 2>/dev/null; echo "* * * * * /bin/bash ./cortex-api-health-update.sh 1> ~/cron-jobs/cron.output 2> ~/cron-jobs/cron.error") | crontab -
 
 
 cortex get --watch

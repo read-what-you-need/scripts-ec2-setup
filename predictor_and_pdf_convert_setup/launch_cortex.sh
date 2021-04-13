@@ -1,7 +1,6 @@
 #!/bin/bash
 # make sure all apis are present within `cortex-api` folder
 cd cortex-api
-
 cd pdf-to-text
 cortex delete pdf-to-text
 cortex deploy
