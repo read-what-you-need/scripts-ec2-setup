@@ -13,10 +13,6 @@ printf "${GREEN}\n\ninstalling cortex${NC}"
 yes | bash -c "$(curl -sS https://raw.githubusercontent.com/cortexlabs/cortex/0.21/get-cli.sh)"
 
 
-# seed the environment variables in bashrc
-printf "${GREEN}\n\nseed environment variables${NC}"
-for d in */; do cp .env "$d"; done
-
 # # pull individual 3 repos
 printf "${GREEN}\n\ncloning repos${NC}"
 cd predictor_and_pdf_convert_setup
@@ -29,6 +25,10 @@ cd ..
 printf "${GREEN}\n\n 3/3 ✓ clone successful ${NC}"
 
 
+
+# seed the environment variables in bashrc
+printf "${GREEN}\n\nseed environment variables${NC}"
+for d in cortex/*/; do cp .env "$d"; done
 
 # activate the api activation protocol
 printf "${GREEN}\n\nLaunching cortex${NC}"
