@@ -12,13 +12,13 @@ for i in "${!api_list[@]}";
                         then
 
                            echo "OK";
-                           api_status=$(cortex get ${api_list[i]} | grep live)
+                           api_status=$(sudo cortex get ${api_list[i]} | grep live)
                            echo "$api_status"
                            curl -fsS -m 5 --retry 5 --data-raw "$api_status" "${api_status_update_webhook[i]}"
 
                         else
                            echo "NOT OK";
-                           api_status=$(cortex get ${api_list[i]} | head -n 3 | tail -n 1)
+                           api_status=$(sudo cortex get ${api_list[i]} | head -n 3 | tail -n 1)
                            echo "$api_status"
                            curl -fsS -m 5 --retry 5 --data-raw "$api_status" "${api_status_update_webhook[i]}/fail"
                 fi

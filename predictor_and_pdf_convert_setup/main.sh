@@ -33,7 +33,6 @@ for d in cortex-api/*/; do sudo cp .env "$d"; done
 # activate the api activation protocol
 printf "${GREEN}\n\nLaunching cortex${NC}"
 bash ./launch_cortex.sh
-cd ..
 
 
 # set up crontab env
@@ -45,7 +44,5 @@ touch cron.error
 cd ..
 
 # activate crontab
-(crontab -l 2>/dev/null; echo "* * * * * /bin/bash ./cortex-api-health-update.sh 1> ~/cron-jobs/cron.output 2> ~/cron-jobs/cron.error") | crontab -
+(crontab -l 2>/dev/null; echo "* * * * * /bin/bash ~/scripts-ec2-setup/predictor_and_pdf_convert_setup/cortex-api-health-update.sh 1> ~/scripts-ec2-setup/predictor_and_pdf_convert_setup/cron-jobs/cron.output 2> ~/scripts-ec2-setup/predictor_and_pdf_convert_setup/cron-jobs/cron.error") | crontab -
 
-
-cortex get --watch
