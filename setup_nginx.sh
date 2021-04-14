@@ -1,4 +1,4 @@
-sudo apt install nginx
+sudo apt install -y nginx
 nginx -s
 sudo cp ./predictor_and_pdf_convert_setup/nginx_predictor_api.conf  /etc/nginx/conf.d/predictorapi.deeps.site.conf
 
