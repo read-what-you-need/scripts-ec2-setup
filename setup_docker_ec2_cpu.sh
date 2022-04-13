@@ -15,17 +15,16 @@ sudo apt-get -y install \
     software-properties-common
 
 printf "${GREEN}download docker and add it's keys${NC}"
-curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
-sudo apt-key fingerprint 0EBFCD88
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
-printf "${GREEN}add repo for docke${NC}"
-sudo add-apt-repository \
-   "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
-   $(lsb_release -cs) \
-   stable"
+printf "${GREEN}add repo for docker${NC}"
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu \
+  $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
 sudo apt-get update
 printf "${GREEN}install docke${NC}"
-sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose
+sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose
 
-sudo groupadd docker; sudo gpasswd -a $USER docker
+sudo gpasswd -a $USER docker
 sudo chmod 777 /var/run/docker.sock
