@@ -24,7 +24,7 @@ echo \
 
 sudo apt-get update
 printf "${GREEN}install docke${NC}"
-sudo apt-get install docker-ce docker-ce-cli containerd.io docker-compose
+sudo apt-get -y install docker-ce docker-ce-cli containerd.io docker-compose
 
 sudo gpasswd -a $USER docker
 sudo chmod 777 /var/run/docker.sock
